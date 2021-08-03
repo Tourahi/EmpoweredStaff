@@ -1,6 +1,9 @@
-import * as mongoose from 'mongoose'
-
-const connectDb = async () => {
+/**
+ * Connects to MongoDB.
+ *
+ * @param {object} mongoose Mongoose object
+ */
+const connectDb = async (mongoose) => {
   try{
     const conn = await mongoose.connect( process.env.MONGO_URI+`/${process.env.DBNAME}`, {
         useNewUrlParser : true ,
