@@ -3,7 +3,7 @@
  * Removes _method from the request body.
  *
  * @param {object} req request
- * @param {object} res site identification
+ * @param {object} res response
  * @returns {string} method name
  */
 const methodeOverride = (req, res) => {

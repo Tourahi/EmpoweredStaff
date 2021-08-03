@@ -3,7 +3,7 @@
  *
  * @param {object} mongoose Mongoose object
  */
-const connectDb = async (mongoose) => {
+const connectDB = async (mongoose) => {
   try{
     const conn = await mongoose.connect( process.env.MONGO_URI+`/${process.env.DBNAME}`, {
         useNewUrlParser : true ,
@@ -21,5 +21,5 @@ const connectDb = async (mongoose) => {
 };
 
 export {
-  connectDb
+  connectDB
 }
