@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Connects to MongoDB.
  *

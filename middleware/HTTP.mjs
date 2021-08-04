@@ -1,4 +1,4 @@
-
+"use strict";
 /**
  * Removes _method from the request body.
  *

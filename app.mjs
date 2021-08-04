@@ -1,3 +1,5 @@
+"use strict";
+
 import express from 'express'
 import mongoose from 'mongoose'
 import session from 'express-session'
@@ -7,8 +9,11 @@ import passport from 'passport'
 import bodyParser from 'body-parser'
 import flash from 'connect-flash'
 import morgan from 'morgan'
+import expHbs from'express-handlebars'
+
 // local
 import {connectDB} from './config/db.mjs'
+import {router} from './routes/index.mjs'
 
 // app
 const app = express();
@@ -21,7 +26,22 @@ app.use(bodyParser.json());
 // connect to mongoDB Database
 connectDB(mongoose)
 
+//template :: express-handlebars
+const hbs = expHbs.create(
+  {
+    extname : '.hbs',
+    layoutsDir: './views/layouts',
+    defaultLaout : 'index',
+  }
+);
+app.engine('.hbs', hbs.engine);
+app.set('view engine', '.hbs');
 
+const registerRoutes = async () => {
+  await router.register(app, express);
+}
+
+registerRoutes();
 
 // booting the server
 const server = app.listen(

@@ -1,3 +1,5 @@
+"use strict";
+
 import join from 'path'
 import methodOverride from './middleware/HTTP'
 
@@ -6,7 +8,7 @@ import methodOverride from './middleware/HTTP'
  *
  * @param {object} app app (express object)
  * @param {object} session session
- * @param {object} MongoStore connect-mongo(session)
+ * @param {object} mongoStore connect-mongo(session)
  * @param {object} mongoose mongoose
  * @param {object} passport passport
  * @param {object} flash flash
@@ -14,7 +16,7 @@ import methodOverride from './middleware/HTTP'
  * @param {object} morgan morgan
  * @param {object} methodOverride methodOverride
  */
-const init = (app,session,MongoStore,mongoose,passport,flash,express,morgan,methodOverride) =>
+const init = (app,session,mongoStore,mongoose,passport,flash,express,morgan,methodOverride) =>
 {
   // Sessions
   app.use(
@@ -22,7 +24,7 @@ const init = (app,session,MongoStore,mongoose,passport,flash,express,morgan,meth
       secret: 'keyboard cat',
       resave: true,
       saveUninitialized: true,
-      store: new MongoStore({ mongooseConnection: mongoose.connection }),
+      store: new mongoStore({ mongooseConnection: mongoose.connection }),
     })
   );
   // Overloading the post method
