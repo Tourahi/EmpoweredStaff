@@ -1,8 +1,8 @@
 "use strict";
 
-import User from '../models/User.js'
+import User from '../models/User.mjs'
 import authStrategies from './strategies.mjs'
-import { verifyCallback } from '../controllers/auth.controller.js'
+import { verifyCallback } from '../controllers/auth.controller.mjs'
 import passportLocal from 'passport-local'
 import passportGoogle from 'passport-google-oauth20'
 

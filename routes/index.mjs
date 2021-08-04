@@ -1,7 +1,7 @@
 "use strict";
 
 import Router from 'express'
-
+import { authRouter } from './auth.mjs'
 export const router = {}
 
 router.register = async (app, express) => {
@@ -17,4 +17,5 @@ router.register = async (app, express) => {
   });
 
   app.use('/', indxRouter);
+  app.use('/auth', authRouter);
 }

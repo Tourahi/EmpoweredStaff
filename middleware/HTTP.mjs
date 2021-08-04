@@ -6,7 +6,7 @@
  * @param {object} res response
  * @returns {string} method name
  */
-const methodeOverride = (req, res) => {
+const _methodOverride = (req, res) => {
   if (req.body && typeof req.body == 'object' && '_method' in req.body) {
     let method = req.body._method;
     delete req.body._method;
@@ -15,5 +15,5 @@ const methodeOverride = (req, res) => {
 }
 
 export {
-  methodeOverride,
+  _methodOverride
 }

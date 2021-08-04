@@ -1,6 +1,6 @@
 "use strict";
 
-import User from '../models/User.js'
+import { User } from '../models/User.mjs'
 import bcrypt from 'bcryptjs'
 import { isPasswordValid } from '../libs/validPass.mjs'
 import {   RegisterValidationSchema,
@@ -51,7 +51,7 @@ authCtrl.registerCtrl = async function (req, res) {
  * @param {callback} done callback to pass data to the next middleware
  */
 authCtrl.verifyCallback = (email, password, done) => {
-  User.find({"email", email})
+  User.find({"email": email})
       .then( async (user) => {
         if (!user) return done(null, false);
         const isValid = await isPasswordValid(User, email, password);
@@ -60,9 +60,10 @@ authCtrl.verifyCallback = (email, password, done) => {
         }else {
           return done(null, false);
         }
-      }).catch(err) => {
+      })
+      .catch((err) => {
         done(err);
-      };
+      });
 }
 
 /**

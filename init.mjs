@@ -1,7 +1,8 @@
 "use strict";
 
-import join from 'path'
-import methodOverride from './middleware/HTTP'
+import path from 'path'
+import { _methodOverride } from './middleware/HTTP.mjs'
+import { __dirname } from './libs/dirPath.mjs'
 
 /**
  * Bind the middlewares to the app object.
@@ -28,7 +29,7 @@ const init = (app,session,mongoStore,mongoose,passport,flash,express,morgan,meth
     })
   );
   // Overloading the post method
-  app.use(methodOverride(methodeoverride));
+  app.use(methodOverride(_methodOverride));
   // Passport middleware
   app.use(passport.initialize());
   app.use(passport.session());

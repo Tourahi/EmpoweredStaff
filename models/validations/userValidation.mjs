@@ -1,6 +1,6 @@
 "use strict";
 
-const Joi = require('joi');
+import Joi from 'joi';
 
 /**
  * Holds Google user validation.
@@ -76,7 +76,7 @@ const LoginValidationSchema = Joi.object({
   password : Joi.string().min(6).required(),
 });
 
-export = {
+export {
   googleUserValidate,
   RegisterValidationSchema,
   LoginValidationSchema
