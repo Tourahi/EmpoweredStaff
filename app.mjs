@@ -37,11 +37,9 @@ const hbs = expHbs.create(
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 
-const registerRoutes = async () => {
-  await router.register(app, express);
-}
-
-registerRoutes();
+(async () => {
+    await router.register(app, express);
+})();
 
 // booting the server
 const server = app.listen(
