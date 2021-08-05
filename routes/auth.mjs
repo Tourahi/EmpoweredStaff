@@ -82,5 +82,5 @@ authRouter.get('/login-failure', authCtrl.loginFailure);
  */
 authRouter.get('/logout' , (req , res) => {
   req.logout();
-  res.redirect('/dashboard');
+  res.redirect('/');
 });

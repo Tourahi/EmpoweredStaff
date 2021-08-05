@@ -1,8 +1,8 @@
 "use strict";
 
-import User from '../models/User.mjs'
-import authStrategies from './strategies.mjs'
-import { verifyCallback } from '../controllers/auth.controller.mjs'
+import { User } from '../models/User.mjs'
+import { authStrategies } from './strategies.mjs'
+import { authCtrl } from '../controllers/auth.controller.mjs'
 import passportLocal from 'passport-local'
 import passportGoogle from 'passport-google-oauth20'
 
@@ -14,7 +14,7 @@ const googleStrategy = passportGoogle.Strategy;
  *
  * @param {object} passport passportjs object
  */
-const passportStrategieBoot = function (passport) {
+export const passportStrategieBoot = function (passport) {
   //Google
   passport.use(new googleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
@@ -23,7 +23,7 @@ const passportStrategieBoot = function (passport) {
   },authStrategies.google));
 
   //local
-  const strategy = new localStrategy({ usernameField: 'email' },verifyCallback);
+  const strategy = new localStrategy({ usernameField: 'email' }, authCtrl.verifyCallback);
   passport.use(strategy);
 
   passport.serializeUser(async function(user, done) {

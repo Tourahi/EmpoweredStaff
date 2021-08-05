@@ -15,11 +15,15 @@ import expHbs from'express-handlebars'
 import { connectDB } from './config/db.mjs'
 import { router } from './routes/index.mjs'
 import { init } from './init.mjs'
+import { passportStrategieBoot } from './config/passport.mjs'
 
 // app
 const app = express();
 const PORT = process.env.PORT || 8000
 const MongoStore = connectMongo(session);
+
+// passport config
+passportStrategieBoot(passport);
 
 // parser
 app.use(bodyParser.urlencoded({extended : true}));

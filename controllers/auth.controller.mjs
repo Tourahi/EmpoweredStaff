@@ -36,7 +36,7 @@ authCtrl.registerCtrl = async function (req, res) {
   try {
     await user.save();
     // Place holder until the dashboard is complete  - Tourahi
-    return res.status(201).send({});
+    return res.status(201).send(user);
   } catch(e) {
     return res.status(500).json({err :"Server Error Unable to save the user."});
   }
@@ -51,7 +51,7 @@ authCtrl.registerCtrl = async function (req, res) {
  * @param {callback} done callback to pass data to the next middleware
  */
 authCtrl.verifyCallback = (email, password, done) => {
-  User.find({"email": email})
+   User.find({"email": email})
       .then( async (user) => {
         if (!user) return done(null, false);
         const isValid = await isPasswordValid(User, email, password);
@@ -73,8 +73,8 @@ authCtrl.verifyCallback = (email, password, done) => {
  * @param {object} res response
  */
 authCtrl.loginSuccess = (req , res , next) => {
-  // res.status(200).json({ user : req.user});
-  res.redirect("/");
+  res.status(200).json({ user : req.user});
+  //res.redirect("/");
 };
 
 /**
