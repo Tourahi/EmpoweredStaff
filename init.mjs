@@ -2,7 +2,12 @@
 
 import path from 'path'
 import { _methodOverride } from './middleware/HTTP.mjs'
-import { __dirname } from './libs/dirPath.mjs'
+
+
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * Bind the middlewares to the app object.
@@ -34,12 +39,13 @@ const init = (app,session,mongoStore,mongoose,passport,flash,express,morgan,meth
   app.use(passport.initialize());
   app.use(passport.session());
   //encoding && json
-  app.use(express.urlencoded({ extended:false }));
+  app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(morgan('tiny'));
   //Connect flash
   app.use(flash());
   //Static folder
+  console.log(__dirname);
   app.use(express.static(path.join(__dirname , 'public')));
 }
 

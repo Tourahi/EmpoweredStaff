@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  /* background: ; */
+  background-repeat: no-repeat;
+  background-color: #121212;
+  background-size: 100% 200%;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  width: 400px;
+  margin-top: 100px;
+  text-align: center;
+  background: #fff;
+}
+.login-card {
+  color: black;
+  background:	#d6e1ff;
+}
+
+
+
+p {
+  margin: 10px 0 !important;
+}
+
+.registerBtn {
+  margin-top: 10px;
+}
+
+.modal {
+  max-height:90% !important;
+}
+/* .card-content div{
+  background: #336B87;
+} */
+
+.btn {
+  background: #2A3132;
+}
+
+.googleBtn {
+ background-image: linear-gradient(to right, #fff, #d37ab7);
+ color: red;
+}
+
+.loginBtn {
+  background: #202323;
+}

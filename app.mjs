@@ -20,10 +20,11 @@ import { passportStrategieBoot } from './config/passport.mjs'
 // app
 const app = express();
 const PORT = process.env.PORT || 8000
-const MongoStore = connectMongo(session);
+
 
 // passport config
 passportStrategieBoot(passport);
+const MongoStore = connectMongo(session);
 
 // parser
 app.use(bodyParser.urlencoded({extended : true}));
@@ -50,6 +51,7 @@ app.set('view engine', '.hbs');
 (async () => {
     await router.register(app, express);
 })();
+
 // booting the server
 const server = app.listen(
   PORT,

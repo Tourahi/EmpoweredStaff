@@ -42,6 +42,7 @@ const isUserExisting = async (req,res,next) => {
  * @param {function} next move to the next middleware
  */
 const checkPassword = async (req,res,next) => {
+  console.log( req.body);
   const user = await User.findOne({email : req.body.email});
   const isPassValid = await bcrypt.compare(req.body.password , user.password);
   if(!isPassValid) return res.status(400).json({err : "incorrect password."})
@@ -57,7 +58,7 @@ const checkPassword = async (req,res,next) => {
  * @param {function} next move to the next middleware
  */
 const ensureAuth = (req , res , next) => {
-  // console.log(req.isAuthenticated());
+  console.log(req.isAuthenticated());
   if(req.isAuthenticated()) {
     return next();
   }else{

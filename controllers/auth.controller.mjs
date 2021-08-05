@@ -20,7 +20,7 @@ authCtrl.registerCtrl = async function (req, res) {
   // Hashing the password
   const salt =  await bcrypt.genSalt(10);
   const hashedPass = await bcrypt.hash(req.body.password, salt);
-
+  console.log(req.body);
   // Construct user
   const UserBody = {
     email : req.body.email,
@@ -29,6 +29,7 @@ authCtrl.registerCtrl = async function (req, res) {
     displayName : req.body.firstName+" "+req.body.lastName,
     password : req.body.password,
   };
+
   const {error} = RegisterValidationSchema.validate(UserBody);
   if (error) return res.status(400).json({err : error.details[0].message});
   UserBody.password = hashedPass;
@@ -73,8 +74,8 @@ authCtrl.verifyCallback = (email, password, done) => {
  * @param {object} res response
  */
 authCtrl.loginSuccess = (req , res , next) => {
-  res.status(200).json({ user : req.user});
-  //res.redirect("/");
+  //res.status(200).json({ user : req.user});
+  res.redirect("/");
 };
 
 /**

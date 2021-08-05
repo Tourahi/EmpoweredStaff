@@ -32,7 +32,7 @@ authRouter.get('/google' , passport.authenticate('google' ,{ scope : ['profile']
 authRouter.get('/google/callback' , passport.authenticate('google' , {
   failureRedirect : '/dashboard'
 }) , (req , res) => {
-  res.redirect('/');
+  res.redirect('/dashboard');
 });
 
 /**
@@ -82,5 +82,5 @@ authRouter.get('/login-failure', authCtrl.loginFailure);
  */
 authRouter.get('/logout' , (req , res) => {
   req.logout();
-  res.redirect('/');
+  res.redirect('/dashboard');
 });
