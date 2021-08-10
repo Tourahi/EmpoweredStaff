@@ -4,6 +4,13 @@ import Router from 'express'
 import { authRouter } from './auth.mjs'
 export const router = {}
 
+// Role checking Middlewares
+import {
+  hasRoleUser,
+  hasRoleAdmin,
+  hasRoleManager
+} from '../middleware/roles.mjs'
+
 // Middlewares for local users
 import {
   isUserExisting,

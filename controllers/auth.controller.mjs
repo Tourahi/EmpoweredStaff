@@ -40,8 +40,8 @@ authCtrl.registerCtrl = async function (req, res) {
   try {
     await user.save();
     // Place holder until the dashboard is complete  - Tourahi
-    return res.status(201).send(user);
-    //res.redirect("/");
+    //return res.status(201).send(user);
+    res.redirect("/");
   } catch(e) {
     return res.status(500).json({err :"Server Error Unable to save the user."});
   }
