@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Tourahi/EmpoweredStaff#readme",
   "dependencies": {
+    "@supercharge/strings": "^1.19.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",

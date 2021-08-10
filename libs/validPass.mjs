@@ -12,7 +12,8 @@ import bcrypt from 'bcryptjs'
  */
 const isPasswordValid = async (schema, email, password) => {
   const user = await schema.findOne({"email": email});
-  const isValid = await bcrypt.compare(password, user.password);
+  const isValid = await bcrypt.compare(user.prefix.concat(password)
+    , user.password);
   if (isValid) return true;
   return false;
 }

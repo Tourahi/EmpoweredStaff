@@ -54,6 +54,8 @@ const RegisterValidationSchema = Joi.object({
                 .required(),
   displayName : Joi.string()
                 .required(),
+  prefix : Joi.string()
+                .required(),
   password : Joi.string()
                 .required(),
   avatar : Joi.object({

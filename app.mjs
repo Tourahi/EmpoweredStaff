@@ -8,13 +8,15 @@ import methodOverride from 'method-override'
 import passport from 'passport'
 import bodyParser from 'body-parser'
 import flash from 'connect-flash'
-import morgan from 'morgan'
 import expHbs from'express-handlebars'
+
+// Dev
+import morgan from 'morgan'
 
 // local
 import { connectDB } from './config/db.mjs'
-import { router } from './routes/index.mjs'
 import { init } from './init.mjs'
+import { router } from './routes/index.mjs'
 import { passportStrategieBoot } from './config/passport.mjs'
 
 // app

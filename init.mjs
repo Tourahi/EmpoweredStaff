@@ -33,19 +33,24 @@ const init = (app,session,mongoStore,mongoose,passport,flash,express,morgan,meth
       store: new mongoStore({ mongooseConnection: mongoose.connection }),
     })
   );
+
   // Overloading the post method
   app.use(methodOverride(_methodOverride));
+
   // Passport middleware
   app.use(passport.initialize());
   app.use(passport.session());
+
   //encoding && json
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
+
   app.use(morgan('tiny'));
+
   //Connect flash
   app.use(flash());
+
   //Static folder
-  console.log(__dirname);
   app.use(express.static(path.join(__dirname , 'public')));
 }
 

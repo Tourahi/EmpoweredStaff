@@ -3,6 +3,7 @@
 import { User } from '../models/User.mjs'
 import bcrypt from 'bcryptjs'
 import { isPasswordValid } from '../libs/validPass.mjs'
+import Str from '@supercharge/strings'
 import {   RegisterValidationSchema,
   LoginValidationSchema } from '../models/validations/userValidation.mjs'
 
@@ -19,15 +20,17 @@ export const authCtrl = {};
 authCtrl.registerCtrl = async function (req, res) {
   // Hashing the password
   const salt =  await bcrypt.genSalt(10);
-  const hashedPass = await bcrypt.hash(req.body.password, salt);
-  console.log(req.body);
+  const pfx = Str.random(6);
+  const hashedPass = await bcrypt.hash(pfx.concat(req.body.password)
+    , salt);
   // Construct user
   const UserBody = {
     email : req.body.email,
     firstName : req.body.firstName,
     lastName : req.body.lastName,
     displayName : req.body.firstName+" "+req.body.lastName,
-    password : req.body.password,
+    prefix : pfx,
+    password : pfx.concat(req.body.password),
   };
 
   const {error} = RegisterValidationSchema.validate(UserBody);
@@ -38,6 +41,7 @@ authCtrl.registerCtrl = async function (req, res) {
     await user.save();
     // Place holder until the dashboard is complete  - Tourahi
     return res.status(201).send(user);
+    //res.redirect("/");
   } catch(e) {
     return res.status(500).json({err :"Server Error Unable to save the user."});
   }

@@ -42,9 +42,10 @@ const isUserExisting = async (req,res,next) => {
  * @param {function} next move to the next middleware
  */
 const checkPassword = async (req,res,next) => {
-  console.log( req.body);
   const user = await User.findOne({email : req.body.email});
-  const isPassValid = await bcrypt.compare(req.body.password , user.password);
+  console.log( user.prefix.concat(req.body.password));
+  const isPassValid = await bcrypt.compare(user.prefix.concat(req.body.password)
+    , user.password);
   if(!isPassValid) return res.status(400).json({err : "incorrect password."})
   next(); //this should be the last middleware else uncomment this line
 }

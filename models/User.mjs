@@ -21,6 +21,11 @@ const userSchema = new mongoose.Schema({
   displayName: {
     type     : String,
   },
+  prefix : {
+    type     : String,
+    min      : 6,
+    max      : 6
+  },
   password : {
     type     : String,
     min      : 6,
