@@ -33,13 +33,29 @@ router.register = async (app, express) => {
   });
 
   /**
+   * Admin page route.
+   *
+   * @desc Admin page
+   * @method GET
+   */
+  indxRouter.get('/admin', ensureAuth, hasRoleAdmin, (req , res) => {
+    res.render('admin/dashboard', {
+      layout: 'main',
+      isAdmin: true
+    });
+  });
+
+  /**
    * Dashboard page route.
    *
    * @desc Dashboard page
    * @method GET
    */
-  indxRouter.get('/dashboard', ensureAuth,(req , res) => {
-    res.render('dashboard', { layout: 'main' });
+  indxRouter.get('/dashboard', ensureAuth, hasRoleUser,(req , res) => {
+    res.render('dashboard', {
+      layout: 'main',
+      isAdmin: false
+    });
   });
 
   app.use('/', indxRouter);

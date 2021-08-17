@@ -75,11 +75,17 @@ const ensureAuth = (req , res , next) => {
  */
 const keepGest = (req , res , next) => {
   if(req.isAuthenticated()) {
-    res.redirect('/dashboard'); //keep users in home page
+    if(req.user.role == "user" || req.user.role == "manager")
+    {
+      res.redirect("/dashboard");
+    }else if (req.user.role == "admin") {
+      res.redirect("/admin");
+    }
   }else{
     return next();
   }
 }
+
 
 export {
   isUserExisting,

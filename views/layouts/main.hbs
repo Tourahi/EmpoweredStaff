@@ -10,7 +10,13 @@
     <title>EmpoweredStaff</title>
   </head>
   <body>
-    {{> _sideNav}}
+
+    {{#if isAdmin}}
+      {{> _sideNavAdmin}}
+    {{else}}
+      {{> _sideNav}}
+    {{/if}}
+
     <div class="container">
       <div class="main">
         {{{body}}}
