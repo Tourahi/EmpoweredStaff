@@ -2,8 +2,7 @@
 
 ##### Human resource management application.
 
-
-
+This repo in not in Sync with the local one.
 
 
 # Install
@@ -26,7 +25,7 @@
       GOOGLE_CLIENT_SECRET = XXXXXXXX
       ```
 
-* Then install npm packages 
+* Then install npm packages
 
   * ```shell
     npm i
@@ -38,7 +37,7 @@
     npm run dev
     ```
 
-* You should see 
+* You should see
 
   * ```shell
     [nodemon] 2.0.12
@@ -50,8 +49,7 @@
     MongoDB instance connected : 127.0.0.1
     Database connected : EmpStaff
     connection url : mongodb://127.0.0.1:27017/EmpStaff
-    
+
     ```
 
   * If else please make sure your mongoDB service is running.
-
